@@ -88,6 +88,7 @@ namespace AppStore.Controllers
             asCourse.TID = Convert.ToInt32(Session["id"]);
             var semester=new SelectList(db.Tbl_Semester,"SemesterID","SemesterName");
             ViewData["semesterShow"] = semester;
+            
             return View();
         }
 
