@@ -1,0 +1,17 @@
+﻿@using Antlr.Runtime
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
+}
+
+<h2>Index radim student</h2>
+
+@{
+     if (Session["id"] != null)
+    {
+        <h3>@Session["name"].ToString();</h3>
+        <h3>@Session["id"].ToString()</h3>
+
+    }
+}

@@ -1,0 +1,56 @@
+﻿@model AppStore.Models.Tbl_Teacher
+
+@{
+    ViewBag.Title = "TeacherLogin";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<h2>Teacher Login</h2>
+
+
+@using (Html.BeginForm("TeacherLogin","Teacher",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Teacher</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TuserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TuserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TuserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tpassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tpassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tpassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Login", "Login", "UserAccount")
+    @Html.ActionLink("Teacher Registration  ", "TeacherReg", "Teacher")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

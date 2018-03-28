@@ -1,0 +1,16 @@
+﻿@model AppStore.Models.Tbl_Teacher
+
+@{
+    ViewBag.Title = "TeacherHome";
+    Layout = "~/Views/Shared/_TeacherLayoutPage.cshtml";
+}
+
+<h2>TeacherHome</h2>
+
+@{
+    if (Session["id"] != null)
+    {
+        <h3>@Session["name"].ToString();</h3>
+        
+    }
+}

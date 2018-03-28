@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AppStore.Models.Tbl_Teacher>
+
+@{
+    ViewBag.Title = "TeacherAdd";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Teacher Request</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tdignation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TInitial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tphone)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tdignation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TInitial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tphone)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Approve", "TeacherAproval", new { id=item.TID }) |
+             |
+            @Html.ActionLink("Delete", "TecherDelete", new { id=item.TID })
+            
+            
+        </td>
+    </tr>
+}
+
+</table>

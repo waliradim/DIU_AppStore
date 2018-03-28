@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AppStore.Models.UserRegInfoModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ULastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UEmail)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ULastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UEmail)
+        </td>
+        
+    </tr>
+}
+
+</table>

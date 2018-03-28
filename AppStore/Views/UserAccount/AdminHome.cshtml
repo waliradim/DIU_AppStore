@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+@if (Session["AdminId"] != null)
+{
+    <h2>AdminHome @Session["AdminName"].ToString()</h2>
+   
+
+}
