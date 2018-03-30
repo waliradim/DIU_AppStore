@@ -1,0 +1,51 @@
+﻿@model AppStore.Models.Tbl_AssignCourse
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_AssignCourse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Course.CourseCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Course.CourseCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Level.LLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Level.LLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Semester.SemesterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Semester.SemesterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Teacher.Tname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Teacher.Tname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

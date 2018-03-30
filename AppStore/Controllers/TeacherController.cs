@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AppStore.Models;
+using System.Data.Entity;
+using System.Web.UI.WebControls;
 
 
 namespace AppStore.Controllers
@@ -12,9 +14,11 @@ namespace AppStore.Controllers
     public class TeacherController : Controller
     {
         private DIU_App_StoreEntities db = new DIU_App_StoreEntities();
+        
         // GET: Teacher
         public ActionResult Index()
         {
+           
             return View();
         }
 
@@ -25,6 +29,7 @@ namespace AppStore.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult TeacherReg(Tbl_Teacher teacher)
         {
             if (ModelState.IsValid)
@@ -46,10 +51,12 @@ namespace AppStore.Controllers
         [HttpGet]
         public ActionResult TeacherLogin()
         {
+            
             return View();
         }
 
         [HttpPost]
+        
         public ActionResult TeacherLogin(Tbl_Teacher teacher)
         {
             var log = db.Tbl_Teacher.Where(n => n.TuserName == teacher.TuserName 
@@ -80,15 +87,22 @@ namespace AppStore.Controllers
 
         public ActionResult AssignCourse()
         {
+            ViewBag.id = new SelectList(db.Tbl_Semester, "SemesterID", "SemesterName");
+            ViewBag.lvl= new SelectList(db.Tbl_Level,"LID","LLevel");
+            ViewBag.curs = new SelectList(db.Tbl_Course,"CID","CourseName");
+
             return View();
         }
         [HttpPost]
         public ActionResult AssignCourse(Tbl_AssignCourse asCourse)
         {
+
             asCourse.TID = Convert.ToInt32(Session["id"]);
-            var semester=new SelectList(db.Tbl_Semester,"SemesterID","SemesterName");
-            ViewData["semesterShow"] = semester;
             
+            var semList = db.Tbl_Semester;
+            SelectList list = new SelectList(semList, "SemesterID", "SemesterName");
+            ViewBag.semShow = list;
+
             return View();
         }
 
