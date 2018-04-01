@@ -35,5 +35,6 @@ namespace AppStore.Models
         public virtual DbSet<Tbl_Student> Tbl_Student { get; set; }
         public virtual DbSet<Tbl_Teacher> Tbl_Teacher { get; set; }
         public virtual DbSet<tbl_UserInfo> tbl_UserInfo { get; set; }
+        public virtual DbSet<Tbl_Level_CourseModels> Tbl_LevelCourse { get; set; }
     }
 }

@@ -239,6 +239,7 @@
     <Compile Include="Models\Tbl_File.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Tbl_Level-CourseModels.cs" />
     <Compile Include="Models\Tbl_Level.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using AppStore.Models;
 using System.Data.Entity;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Web.UI.WebControls;
 
 
@@ -87,24 +88,57 @@ namespace AppStore.Controllers
 
         public ActionResult AssignCourse()
         {
-            ViewBag.id = new SelectList(db.Tbl_Semester, "SemesterID", "SemesterName");
-            ViewBag.lvl= new SelectList(db.Tbl_Level,"LID","LLevel");
-            ViewBag.curs = new SelectList(db.Tbl_Course,"CID","CourseName");
+
+            ViewBag.id = new SelectList(db.Tbl_Semester.OrderByDescending(semester =>semester.SemesterID ) , "SemesterID", "SemesterName");
+            ViewBag.lvl = new SelectList(db.Tbl_Level, "LID", "LLevel");
+            ViewBag.curs = new SelectList(db.Tbl_Course, "CID", "CourseName");
 
             return View();
         }
+
+        public JsonResult GetLevel()
+        {
+            var lvl = (from lv in db.Tbl_Level
+                join av in db.Tbl_LevelCourse
+                    on lv.LID equals av.LID
+                select new  { name=lv.LLevel, valu=av.LID }).ToList().OrderBy(x=>x.name);
+            return Json(lvl,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCourse(int id)
+        {
+            var cor = (from c in db.Tbl_Course
+                join b in db.Tbl_LevelCourse
+                    on c.CID equals b.CID
+                where b.LID == id
+                select new {name = c.CourseName, valu = b.CID}).ToList().OrderBy(x => x.name);
+            return Json(cor);
+        }
+
         [HttpPost]
-        public ActionResult AssignCourse(Tbl_AssignCourse asCourse)
+        public ActionResult AssignCourse([Bind(Include = "id,TID,LID,SemesterID,CID")] Tbl_AssignCourse asCourse)
         {
 
-            asCourse.TID = Convert.ToInt32(Session["id"]);
-            
-            var semList = db.Tbl_Semester;
-            SelectList list = new SelectList(semList, "SemesterID", "SemesterName");
-            ViewBag.semShow = list;
+            if (ModelState.IsValid)
+            {
+                //tbl_AssignCourse.TID = 1;
+                db.Tbl_AssignCourse.Add(asCourse);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-            return View();
+            ViewBag.CID = new SelectList(db.Tbl_Course, "CID", "CourseCode", asCourse.CID);
+            ViewBag.LID = new SelectList(db.Tbl_Level, "LID", "LLevel", asCourse.LID);
+            ViewBag.SemesterID = new SelectList(db.Tbl_Semester, "SemesterID", "SemesterName", asCourse.SemesterID);
+            ViewBag.TID = new SelectList(db.Tbl_Teacher, "TID", "Tname", asCourse.TID);
+            return View(asCourse);
+            
         }
+
+        //public ActionResult test()
+        //{
+        //    return View(db.Tbl_LevelCourse.ToList());
+        //}
 
     }
 }
