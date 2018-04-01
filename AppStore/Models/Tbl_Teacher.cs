@@ -29,39 +29,38 @@ namespace AppStore.Models
         [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
         [DataType(DataType.Text)]
         public string Tname { get; set; }
-        [Required]
+        [Required(ErrorMessage = "please provide your Employee ID")]
         [Display(Name = "Employee ID")]
         [StringLength(12, ErrorMessage = "only Employee ID", MinimumLength = 5)]
         public string TEid { get; set; }
-        [Required]
+        [Required(ErrorMessage = "select your Degnation")]
         [Display(Name = "Degnation")]
         public string Tdignation { get; set; }
-        [Required]
-        [Display(Name = "Initial")]
-        [StringLength(5, ErrorMessage = "Maximum 5 and minimum 2", MinimumLength = 2)]
+        [Required(ErrorMessage = "please provide your Initial Name")]
+        [Display(Name = "Initial Name")]
+        [StringLength(6, ErrorMessage = "Maximum 6 and minimum 2", MinimumLength = 2)]
         public string TInitial { get; set; }
-        [Required]
+        [Required(ErrorMessage = "please provide your E-mail address")]
         [Display(Name = "E-mail")]
         [DataType(DataType.EmailAddress)]
         [StringLength(30, ErrorMessage = "only E-mail address", MinimumLength = 5)]
         public string TEmail { get; set; }
-        [Required]
+        [Required(ErrorMessage = "please provide your phone number")]
         [Display(Name = "Phone")]
         [DataType(DataType.PhoneNumber)]
         [StringLength(20, ErrorMessage = "only Phone Number address", MinimumLength = 5)]
         public string Tphone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "please provide your username")]
         [Display(Name = "User Name")]
         [StringLength(30, ErrorMessage = "User Name", MinimumLength = 4)]
         public string TuserName { get; set; }
-        [Required]
+        [Required (ErrorMessage = "please provide your password")]
         [Display(Name = " Password")]
         [DataType(DataType.Password)]
         [StringLength(30, ErrorMessage = "Password minmum 6 and maximum 30", MinimumLength = 6)]
         public string Tpassword { get; set; }
         [Display(Name = " Is Teacher")]
         [DefaultValue(false)]
-        
         public Nullable<bool> IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

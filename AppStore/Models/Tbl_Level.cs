@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace AppStore.Models
 {
     using System;
@@ -22,6 +24,10 @@ namespace AppStore.Models
         }
     
         public int LID { get; set; }
+        [Required(ErrorMessage = "Please Insert Level Name")]
+        [Display(Name = "Level")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string LLevel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

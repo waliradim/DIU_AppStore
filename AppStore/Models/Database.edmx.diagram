@@ -10,18 +10,20 @@
         <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Course" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_File" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Level" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Project" Width="1.5" PointX="10" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Semester" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Student" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Student" Width="1.5" PointX="12.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Teacher" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="DIU_App_StoreModel.tbl_UserInfo" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Course" ManuallyRouted="false" />
         <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Level" ManuallyRouted="false" />
         <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Semester" ManuallyRouted="false" />
         <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Teacher" ManuallyRouted="false" />
-        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_File_Tbl_Project" ManuallyRouted="false" />
-        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Student" ManuallyRouted="false" />
         <AssociationConnector Association="DIU_App_StoreModel.Tbl_Level_Course" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DIU_App_StoreModel.Tbl_Project" Width="1.5" PointX="8.625" PointY="0.875" />
+        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Course" />
+        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_File_Tbl_Project" />
+        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Semester" />
+        <AssociationConnector Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Student" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

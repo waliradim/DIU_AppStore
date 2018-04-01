@@ -21,21 +21,26 @@ namespace AppStore.Models
         {
             this.Tbl_AssignCourse = new HashSet<Tbl_AssignCourse>();
             this.Tbl_Level = new HashSet<Tbl_Level>();
+            this.Tbl_Project = new HashSet<Tbl_Project>();
         }
     
         public int CID { get; set; }
         [Required]
         [Display(Name = "Course Code")]
-        [StringLength(7, ErrorMessage = "Only 7 character", MinimumLength = 5)]
+        [StringLength(7, ErrorMessage = "Maximum 7 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string CourseCode { get; set; }
         [Required]
         [Display(Name = "Course Name")]
-        [StringLength(100, ErrorMessage = "Only Course Name Total Character 100", MinimumLength = 5)]
+        [StringLength(145, ErrorMessage = "Maximum 145 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string CourseName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_AssignCourse> Tbl_AssignCourse { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Level> Tbl_Level { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Project> Tbl_Project { get; set; }
     }
 }

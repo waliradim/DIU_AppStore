@@ -30,11 +30,10 @@ namespace AppStore.Models
         public virtual DbSet<Tbl_Course> Tbl_Course { get; set; }
         public virtual DbSet<Tbl_File> Tbl_File { get; set; }
         public virtual DbSet<Tbl_Level> Tbl_Level { get; set; }
-        public virtual DbSet<Tbl_Project> Tbl_Project { get; set; }
         public virtual DbSet<Tbl_Semester> Tbl_Semester { get; set; }
         public virtual DbSet<Tbl_Student> Tbl_Student { get; set; }
         public virtual DbSet<Tbl_Teacher> Tbl_Teacher { get; set; }
         public virtual DbSet<tbl_UserInfo> tbl_UserInfo { get; set; }
-        public virtual DbSet<Tbl_Level_CourseModels> Tbl_LevelCourse { get; set; }
+        public virtual DbSet<Tbl_Project> Tbl_Project { get; set; }
     }
 }

@@ -20,15 +20,19 @@ namespace AppStore.Models
         public Tbl_Semester()
         {
             this.Tbl_AssignCourse = new HashSet<Tbl_AssignCourse>();
+            this.Tbl_Project = new HashSet<Tbl_Project>();
         }
     
         public int SemesterID { get; set; }
-        [Required]
-        [Display(Name = "Course Name")]
-        [StringLength(100, ErrorMessage = "Only Semester Name Total Character 100", MinimumLength = 5)]
+        [Required(ErrorMessage ="Please Insert Semester Name" )]
+        [Display(Name = "Semester Name")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string SemesterName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_AssignCourse> Tbl_AssignCourse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Project> Tbl_Project { get; set; }
     }
 }

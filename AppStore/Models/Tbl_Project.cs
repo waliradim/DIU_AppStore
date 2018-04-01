@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace AppStore.Models
 {
     using System;
@@ -22,11 +24,22 @@ namespace AppStore.Models
     
         public int PID { get; set; }
         public int SID { get; set; }
+        public Nullable<int> CID { get; set; }
+        public Nullable<int> SemesterID { get; set; }
+        [Required(ErrorMessage = "Please Insert a Project Name")]
+        [Display(Name = "Project Name")]
+        [StringLength(245, ErrorMessage = "Maximum 245 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string Pname { get; set; }
+        [Display(Name = "Project Detils")]
+        [StringLength(245, ErrorMessage = "Maximum 245 character")]
+        [DataType(DataType.Text)]
         public string Pdetils { get; set; }
     
+        public virtual Tbl_Course Tbl_Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_File> Tbl_File { get; set; }
+        public virtual Tbl_Semester Tbl_Semester { get; set; }
         public virtual Tbl_Student Tbl_Student { get; set; }
     }
 }

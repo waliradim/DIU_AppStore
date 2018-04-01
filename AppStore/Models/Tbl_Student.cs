@@ -23,13 +23,39 @@ namespace AppStore.Models
         }
     
         public int SID { get; set; }
+        [Required(ErrorMessage = "Your Name")]
+        [Display(Name = "Student Name")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string Sname { get; set; }
+        [Required(ErrorMessage = "Your Student ID")]
+        [Display(Name = "Student ID")]
+        [StringLength(14, ErrorMessage = "Maximum 14 character minimum 3", MinimumLength = 3)]
         public string Stid { get; set; }
-        
+        [Required(ErrorMessage = "Your Batch")]
+        [Display(Name = "Batch Number")]
+        [Range(1,999)]
         public Nullable<int> Sbatch { get; set; }
+        [Required]
+        [Display(Name = "E-mail")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.EmailAddress)]
         public string SEmail { get; set; }
+        [Required]
+        [Display(Name = "Mobile Number")]
+        [StringLength(14, ErrorMessage = "Maximum 14 character minimum 8", MinimumLength = 8)]
+        [RegularExpression("([0-9]+)",ErrorMessage = "only number")]
         public string Sphone { get; set; }
+        [Required(ErrorMessage = "Provide your username")]
+        [Display(Name = "User Name")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
+        [DataType(DataType.Text)]
         public string SuserName { get; set; }
+        [Required(ErrorMessage = "Provide Your Password")]
+        [Display(Name = "Password")]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 6", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        
         public string Spassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
