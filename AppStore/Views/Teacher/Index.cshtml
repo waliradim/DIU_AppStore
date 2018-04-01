@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AppStore.Models.VMTeacherCourse>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Course Id
+        </th>
+        <th>
+            Teacher Id
+        </th>
+        <th>
+            Teacher Name
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Semester Name
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.CID
+        </td>
+        <td>
+            @item.TID
+        </td>
+        <td>
+            @item.TeacherName
+        </td>
+        <td>
+            @item.CourseName
+        </td>
+        <td>
+            @item.SemesterName
+        </td>
+    </tr>
+}
+
+</table>

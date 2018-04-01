@@ -19,8 +19,15 @@ namespace AppStore.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-           
-            return View();
+            var teacherCourse = db.Tbl_AssignCourse.Select(a => new VMTeacherCourse()
+            {
+                CID = a.CID,
+                TID = a.TID,
+                CourseName = a.Tbl_Course.CourseName,
+                TeacherName = a.Tbl_Teacher.Tname,
+                SemesterName = a.Tbl_Semester.SemesterName
+            }).ToList();
+            return View(teacherCourse);
         }
 
 
@@ -95,24 +102,36 @@ namespace AppStore.Controllers
 
             return View();
         }
-
+        [HttpGet]
         public JsonResult GetLevel()
         {
-            var lvl = (from lv in db.Tbl_Level
-                join av in db.Tbl_LevelCourse
-                    on lv.LID equals av.LID
-                select new  { name=lv.LLevel, valu=av.LID }).ToList().OrderBy(x=>x.name);
-            return Json(lvl,JsonRequestBehavior.AllowGet);
+            var result = db.Tbl_Level.Select(p => new
+            {
+                LID = p.LID,
+                LevelName = p.LLevel
+            }).ToList();
+
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCourse(int id)
         {
-            var cor = (from c in db.Tbl_Course
-                join b in db.Tbl_LevelCourse
-                    on c.CID equals b.CID
-                where b.LID == id
-                select new {name = c.CourseName, valu = b.CID}).ToList().OrderBy(x => x.name);
-            return Json(cor);
+            var result = db.Tbl_Course.Where(c => c.Tbl_Level.Any(l => l.LID == id)).Select(c => new
+            {
+                CID = c.CID,
+                CourseName = c.CourseName
+            }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllCourse()
+        {
+            var result = db.Tbl_Course.Select(c => new
+            {
+                CID = c.CID,
+                CourseName = c.CourseName
+            }).ToList();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -121,7 +140,7 @@ namespace AppStore.Controllers
 
             if (ModelState.IsValid)
             {
-                //tbl_AssignCourse.TID = 1;
+                asCourse.TID = 1;
                 db.Tbl_AssignCourse.Add(asCourse);
                 db.SaveChanges();
                 return RedirectToAction("Index");
