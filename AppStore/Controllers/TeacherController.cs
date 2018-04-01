@@ -19,7 +19,8 @@ namespace AppStore.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            var teacherCourse = db.Tbl_AssignCourse.Select(a => new VMTeacherCourse()
+            int id = Convert.ToInt32(Session["id"]);
+            var teacherCourse = db.Tbl_AssignCourse.Where(x=>x.TID==id).Select(a => new VMTeacherCourse()
             {
                 CID = a.CID,
                 TID = a.TID,
