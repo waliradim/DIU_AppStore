@@ -140,7 +140,7 @@ namespace AppStore.Controllers
 
             if (ModelState.IsValid)
             {
-                asCourse.TID = 1;
+                asCourse.TID =Convert.ToInt32( Session["id"]);
                 db.Tbl_AssignCourse.Add(asCourse);
                 db.SaveChanges();
                 return RedirectToAction("Index");
