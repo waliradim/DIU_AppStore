@@ -22,6 +22,11 @@ namespace AppStore.Controllers
             return View();
         }
 
+        public ActionResult Getall()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Registation(Tbl_Student student )
         {
