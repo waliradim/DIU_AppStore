@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DIU_App_StoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_AssignCourse">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TID" Type="int" Nullable="false" />
+    <Property Name="LID" Type="int" Nullable="false" />
+    <Property Name="SemesterID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Course">
+    <Key>
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="CID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseCode" Type="varchar" MaxLength="50" />
+    <Property Name="CourseName" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Tbl_File">
+    <Key>
+      <PropertyRef Name="FID" />
+    </Key>
+    <Property Name="FID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PID" Type="int" Nullable="false" />
+    <Property Name="Ffile1" Type="varchar" MaxLength="50" />
+    <Property Name="Ffile2" Type="varchar" MaxLength="50" />
+    <Property Name="Photo1" Type="varchar" MaxLength="50" />
+    <Property Name="Photo2" Type="varchar" MaxLength="50" />
+    <Property Name="Url" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_Level">
+    <Key>
+      <PropertyRef Name="LID" />
+    </Key>
+    <Property Name="LID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LLevel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tbl_Level-Course">
+    <Key>
+      <PropertyRef Name="LID" />
+      <PropertyRef Name="CID" />
+    </Key>
+    <Property Name="LID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Project">
+    <Key>
+      <PropertyRef Name="PID" />
+    </Key>
+    <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" />
+    <Property Name="SemesterID" Type="int" />
+    <Property Name="Pname" Type="varchar" MaxLength="250" />
+    <Property Name="Pdetils" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Semester">
+    <Key>
+      <PropertyRef Name="SemesterID" />
+    </Key>
+    <Property Name="SemesterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SemesterName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_Student">
+    <Key>
+      <PropertyRef Name="SID" />
+    </Key>
+    <Property Name="SID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sname" Type="varchar" MaxLength="50" />
+    <Property Name="Stid" Type="varchar" MaxLength="50" />
+    <Property Name="Sbatch" Type="int" />
+    <Property Name="SEmail" Type="varchar" MaxLength="50" />
+    <Property Name="Sphone" Type="varchar" MaxLength="50" />
+    <Property Name="SuserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Spassword" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Teacher">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tname" Type="varchar" MaxLength="50" />
+    <Property Name="TEid" Type="varchar" MaxLength="50" />
+    <Property Name="Tdignation" Type="varchar" MaxLength="50" />
+    <Property Name="TInitial" Type="varchar" MaxLength="50" />
+    <Property Name="TEmail" Type="varchar" MaxLength="50" />
+    <Property Name="Tphone" Type="varchar" MaxLength="50" />
+    <Property Name="TuserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tpassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="uLastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="uEmail" Type="varchar" MaxLength="50" />
+    <Property Name="uPassword" Type="varchar(max)" />
+    <Property Name="uPhoto" Type="varchar" MaxLength="50" />
+    <Property Name="uActive" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Tbl_AssignCourse_Tbl_Course">
+    <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="1" />
+    <End Role="Tbl_AssignCourse" Type="Self.Tbl_AssignCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Course">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Tbl_AssignCourse">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_AssignCourse_Tbl_Level">
+    <End Role="Tbl_Level" Type="Self.Tbl_Level" Multiplicity="1" />
+    <End Role="Tbl_AssignCourse" Type="Self.Tbl_AssignCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Level">
+        <PropertyRef Name="LID" />
+      </Principal>
+      <Dependent Role="Tbl_AssignCourse">
+        <PropertyRef Name="LID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_AssignCourse_Tbl_Semester">
+    <End Role="Tbl_Semester" Type="Self.Tbl_Semester" Multiplicity="1" />
+    <End Role="Tbl_AssignCourse" Type="Self.Tbl_AssignCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="Tbl_AssignCourse">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_AssignCourse_Tbl_Teacher">
+    <End Role="Tbl_Teacher" Type="Self.Tbl_Teacher" Multiplicity="1" />
+    <End Role="Tbl_AssignCourse" Type="Self.Tbl_AssignCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Teacher">
+        <PropertyRef Name="TID" />
+      </Principal>
+      <Dependent Role="Tbl_AssignCourse">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_File_Tbl_Project">
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="1" />
+    <End Role="Tbl_File" Type="Self.Tbl_File" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Project">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Tbl_File">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Level-Course_Tbl_Course">
+    <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="1" />
+    <End Role="Tbl_Level-Course" Type="Self.Tbl_Level-Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Course">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Tbl_Level-Course">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Level-Course_Tbl_Level">
+    <End Role="Tbl_Level" Type="Self.Tbl_Level" Multiplicity="1" />
+    <End Role="Tbl_Level-Course" Type="Self.Tbl_Level-Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Level">
+        <PropertyRef Name="LID" />
+      </Principal>
+      <Dependent Role="Tbl_Level-Course">
+        <PropertyRef Name="LID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Project_Tbl_Course">
+    <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="0..1" />
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Course">
+        <PropertyRef Name="CID" />
+      </Principal>
+      <Dependent Role="Tbl_Project">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Project_Tbl_Semester">
+    <End Role="Tbl_Semester" Type="Self.Tbl_Semester" Multiplicity="0..1" />
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Semester">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="Tbl_Project">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Project_Tbl_Student">
+    <End Role="Tbl_Student" Type="Self.Tbl_Student" Multiplicity="1" />
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Student">
+        <PropertyRef Name="SID" />
+      </Principal>
+      <Dependent Role="Tbl_Project">
+        <PropertyRef Name="SID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DIU_App_StoreModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_AssignCourse" EntityType="Self.Tbl_AssignCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Course" EntityType="Self.Tbl_Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_File" EntityType="Self.Tbl_File" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Level" EntityType="Self.Tbl_Level" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Project" EntityType="Self.Tbl_Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Semester" EntityType="Self.Tbl_Semester" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Teacher" EntityType="Self.Tbl_Teacher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_UserInfo" EntityType="Self.tbl_UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Level-Course" EntityType="Self.Tbl_Level-Course" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tbl_Level-Course].[LID] AS [LID], 
+    [Tbl_Level-Course].[CID] AS [CID]
+    FROM [dbo].[Tbl_Level-Course] AS [Tbl_Level-Course]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Course" Association="Self.FK_Tbl_AssignCourse_Tbl_Course">
+      <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+      <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Level" Association="Self.FK_Tbl_AssignCourse_Tbl_Level">
+      <End Role="Tbl_Level" EntitySet="Tbl_Level" />
+      <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Semester" Association="Self.FK_Tbl_AssignCourse_Tbl_Semester">
+      <End Role="Tbl_Semester" EntitySet="Tbl_Semester" />
+      <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Teacher" Association="Self.FK_Tbl_AssignCourse_Tbl_Teacher">
+      <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
+      <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_File_Tbl_Project" Association="Self.FK_Tbl_File_Tbl_Project">
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+      <End Role="Tbl_File" EntitySet="Tbl_File" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Level-Course_Tbl_Course" Association="Self.FK_Tbl_Level-Course_Tbl_Course">
+      <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+      <End Role="Tbl_Level-Course" EntitySet="Tbl_Level-Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Level-Course_Tbl_Level" Association="Self.FK_Tbl_Level-Course_Tbl_Level">
+      <End Role="Tbl_Level" EntitySet="Tbl_Level" />
+      <End Role="Tbl_Level-Course" EntitySet="Tbl_Level-Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Project_Tbl_Course" Association="Self.FK_Tbl_Project_Tbl_Course">
+      <End Role="Tbl_Course" EntitySet="Tbl_Course" />
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Project_Tbl_Semester" Association="Self.FK_Tbl_Project_Tbl_Semester">
+      <End Role="Tbl_Semester" EntitySet="Tbl_Semester" />
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Project_Tbl_Student" Association="Self.FK_Tbl_Project_Tbl_Student">
+      <End Role="Tbl_Student" EntitySet="Tbl_Student" />
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

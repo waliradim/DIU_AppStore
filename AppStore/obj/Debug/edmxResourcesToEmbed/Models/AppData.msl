@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DIU_App_StoreModelStoreContainer" CdmEntityContainer="DdbContext">
+    <EntitySetMapping Name="tbl_UserInfo">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.tbl_UserInfo">
+        <MappingFragment StoreEntitySet="tbl_UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="uFirstName" ColumnName="uFirstName" />
+          <ScalarProperty Name="uLastName" ColumnName="uLastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="uEmail" ColumnName="uEmail" />
+          <ScalarProperty Name="uPassword" ColumnName="uPassword" />
+          <ScalarProperty Name="uPhoto" ColumnName="uPhoto" />
+          <ScalarProperty Name="uActive" ColumnName="uActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

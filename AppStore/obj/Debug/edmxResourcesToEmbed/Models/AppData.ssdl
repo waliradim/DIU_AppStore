@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DIU_App_StoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="uLastName" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="uEmail" Type="varchar" MaxLength="50" />
+    <Property Name="uPassword" Type="varchar(max)" />
+    <Property Name="uPhoto" Type="varchar" MaxLength="50" />
+    <Property Name="uActive" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="DIU_App_StoreModelStoreContainer">
+    <EntitySet Name="tbl_UserInfo" EntityType="Self.tbl_UserInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

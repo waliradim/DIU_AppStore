@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DIU_App_StoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="uPhoto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="uActive" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="DdbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_UserInfo" EntityType="Self.tbl_UserInfo" />
+  </EntityContainer>
+</Schema>
