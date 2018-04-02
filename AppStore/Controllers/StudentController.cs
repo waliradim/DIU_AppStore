@@ -14,7 +14,15 @@ namespace AppStore.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View();
+            var teacherCourse = db.Tbl_AssignCourse.Select(a => new VMTeacherCourse()
+            {
+                CID = a.CID,
+                TID = a.TID,
+                CourseName = a.Tbl_Course.CourseName,
+                TeacherName = a.Tbl_Teacher.Tname,
+                SemesterName = a.Tbl_Semester.SemesterName
+            }).ToList();
+            return View(teacherCourse);
         }
 
         public ActionResult Registation()
@@ -22,10 +30,7 @@ namespace AppStore.Controllers
             return View();
         }
 
-        public ActionResult Getall()
-        {
-            return View();
-        }
+        
 
         [HttpPost]
         public ActionResult Registation(Tbl_Student student )

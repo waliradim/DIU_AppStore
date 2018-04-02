@@ -1,17 +1,45 @@
-﻿@using Antlr.Runtime
+﻿@model IEnumerable<AppStore.Models.VMTeacherCourse>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
+    Layout = "~/Views/Shared/_TeacherLayoutPage.cshtml";
 }
 
-<h2>Index radim student</h2>
+<h2>Index</h2>
 
-@{
-     if (Session["id"] != null)
-    {
-        <h3>@Session["name"].ToString();</h3>
-        <h3>@Session["id"].ToString()</h3>
+<table class="table">
+    <tr>
+        <th>
+            Course Id
+        </th>
+        
+        <th>
+            Teacher Name
+        </th>
+        <th>
+            Course Name
+        </th>
+        <th>
+            Semester Name
+        </th>
+    </tr>
 
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.CID
+            </td>
+            
+            <td>
+                @item.TeacherName
+            </td>
+            <td>
+                @item.CourseName
+            </td>
+            <td>
+                @item.SemesterName
+            </td>
+        </tr>
     }
-}
+
+</table>

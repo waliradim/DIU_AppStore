@@ -362,9 +362,9 @@
     <Content Include="Views\Teacher\AssignCourse.cshtml" />
     <Content Include="Views\Shared\_LayoutPageStudent.cshtml" />
     <Content Include="Views\Student\Registation.cshtml" />
-    <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Login.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
