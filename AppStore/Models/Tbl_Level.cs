@@ -24,7 +24,7 @@ namespace AppStore.Models
         }
     
         public int LID { get; set; }
-        [Required(ErrorMessage = "Please Insert Level Name")]
+        [Required (ErrorMessage = "Please Insert Level Name")]
         [Display(Name = "Level")]
         [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
         [DataType(DataType.Text)]

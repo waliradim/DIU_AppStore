@@ -21,6 +21,7 @@ namespace AppStore.Models
         public Tbl_Teacher()
         {
             this.Tbl_AssignCourse = new HashSet<Tbl_AssignCourse>();
+            this.Tbl_Project = new HashSet<Tbl_Project>();
         }
     
         public int TID { get; set; }
@@ -54,7 +55,7 @@ namespace AppStore.Models
         [Display(Name = "User Name")]
         [StringLength(30, ErrorMessage = "User Name", MinimumLength = 4)]
         public string TuserName { get; set; }
-        [Required (ErrorMessage = "please provide your password")]
+        [Required(ErrorMessage = "please provide your password")]
         [Display(Name = " Password")]
         [DataType(DataType.Password)]
         [StringLength(30, ErrorMessage = "Password minmum 6 and maximum 30", MinimumLength = 6)]
@@ -65,5 +66,7 @@ namespace AppStore.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_AssignCourse> Tbl_AssignCourse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_Project> Tbl_Project { get; set; }
     }
 }

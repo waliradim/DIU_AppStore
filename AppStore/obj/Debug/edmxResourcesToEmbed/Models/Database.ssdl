@@ -62,6 +62,7 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
       <PropertyRef Name="PID" />
     </Key>
     <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TID" Type="int" />
     <Property Name="SID" Type="int" Nullable="false" />
     <Property Name="CID" Type="int" />
     <Property Name="SemesterID" Type="int" />
@@ -236,6 +237,18 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Tbl_Project_Tbl_Teacher">
+    <End Role="Tbl_Teacher" Type="Self.Tbl_Teacher" Multiplicity="0..1" />
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Teacher">
+        <PropertyRef Name="TID" />
+      </Principal>
+      <Dependent Role="Tbl_Project">
+        <PropertyRef Name="TID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="DIU_App_StoreModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_AssignCourse" EntityType="Self.Tbl_AssignCourse" Schema="dbo" store:Type="Tables" />
@@ -291,6 +304,10 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
     </AssociationSet>
     <AssociationSet Name="FK_Tbl_Project_Tbl_Student" Association="Self.FK_Tbl_Project_Tbl_Student">
       <End Role="Tbl_Student" EntitySet="Tbl_Student" />
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Project_Tbl_Teacher" Association="Self.FK_Tbl_Project_Tbl_Teacher">
+      <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
       <End Role="Tbl_Project" EntitySet="Tbl_Project" />
     </AssociationSet>
   </EntityContainer>

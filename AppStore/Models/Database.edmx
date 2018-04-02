@@ -67,6 +67,7 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             <PropertyRef Name="PID" />
           </Key>
           <Property Name="PID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TID" Type="int" />
           <Property Name="SID" Type="int" Nullable="false" />
           <Property Name="CID" Type="int" />
           <Property Name="SemesterID" Type="int" />
@@ -241,6 +242,18 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tbl_Project_Tbl_Teacher">
+          <End Role="Tbl_Teacher" Type="Self.Tbl_Teacher" Multiplicity="0..1" />
+          <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Tbl_Project">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DIU_App_StoreModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_AssignCourse" EntityType="Self.Tbl_AssignCourse" Schema="dbo" store:Type="Tables" />
@@ -298,6 +311,10 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             <End Role="Tbl_Student" EntitySet="Tbl_Student" />
             <End Role="Tbl_Project" EntitySet="Tbl_Project" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Project_Tbl_Teacher" Association="Self.FK_Tbl_Project_Tbl_Teacher">
+            <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
+            <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -325,7 +342,7 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
           <NavigationProperty Name="Tbl_Course" Relationship="Self.FK_Tbl_AssignCourse_Tbl_Course" FromRole="Tbl_AssignCourse" ToRole="Tbl_Course" />
           <NavigationProperty Name="Tbl_Level" Relationship="Self.FK_Tbl_AssignCourse_Tbl_Level" FromRole="Tbl_AssignCourse" ToRole="Tbl_Level" />
           <NavigationProperty Name="Tbl_Semester" Relationship="Self.FK_Tbl_AssignCourse_Tbl_Semester" FromRole="Tbl_AssignCourse" ToRole="Tbl_Semester" />
-          <NavigationProperty Name="Tbl_Teacher" Relationship="Self.FK_Tbl_AssignCourse_Tbl_Teacher" FromRole="Tbl_AssignCourse" ToRole="Tbl_Teacher" />
+          <NavigationProperty Name="Tbl_Teacher" Relationship="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Teacher" FromRole="Tbl_AssignCourse" ToRole="Tbl_Teacher" />
         </EntityType>
         <EntityType Name="Tbl_Course">
           <Key>
@@ -383,22 +400,6 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
           <Property Name="Spassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tbl_Project" Relationship="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Student" FromRole="Tbl_Student" ToRole="Tbl_Project" />
         </EntityType>
-        <EntityType Name="Tbl_Teacher">
-          <Key>
-            <PropertyRef Name="TID" />
-          </Key>
-          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TEid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tdignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Tphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TuserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="Tbl_AssignCourse" Relationship="Self.FK_Tbl_AssignCourse_Tbl_Teacher" FromRole="Tbl_Teacher" ToRole="Tbl_AssignCourse" />
-        </EntityType>
         <EntityType Name="tbl_UserInfo">
           <Key>
             <PropertyRef Name="UserId" />
@@ -448,18 +449,6 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tbl_AssignCourse_Tbl_Teacher">
-          <End Role="Tbl_Teacher" Type="Self.Tbl_Teacher" Multiplicity="1" />
-          <End Role="Tbl_AssignCourse" Type="Self.Tbl_AssignCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Teacher">
-              <PropertyRef Name="TID" />
-            </Principal>
-            <Dependent Role="Tbl_AssignCourse">
-              <PropertyRef Name="TID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Tbl_Level_Course">
           <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="*" />
           <End Role="Tbl_Level" Type="Self.Tbl_Level" Multiplicity="*" />
@@ -472,7 +461,6 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
           <EntitySet Name="Tbl_Level" EntityType="Self.Tbl_Level" />
           <EntitySet Name="Tbl_Semester" EntityType="Self.Tbl_Semester" />
           <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" />
-          <EntitySet Name="Tbl_Teacher" EntityType="Self.Tbl_Teacher" />
           <EntitySet Name="tbl_UserInfo" EntityType="Self.tbl_UserInfo" />
           <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Course" Association="Self.FK_Tbl_AssignCourse_Tbl_Course">
             <End Role="Tbl_Course" EntitySet="Tbl_Course" />
@@ -486,15 +474,16 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             <End Role="Tbl_Semester" EntitySet="Tbl_Semester" />
             <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Teacher" Association="Self.FK_Tbl_AssignCourse_Tbl_Teacher">
-            <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
-            <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
-          </AssociationSet>
           <AssociationSet Name="Tbl_Level_Course" Association="Self.Tbl_Level_Course">
             <End Role="Tbl_Course" EntitySet="Tbl_Course" />
             <End Role="Tbl_Level" EntitySet="Tbl_Level" />
           </AssociationSet>
           <EntitySet Name="Tbl_Project" EntityType="DIU_App_StoreModel.Tbl_Project" />
+          <EntitySet Name="Tbl_Teacher" EntityType="DIU_App_StoreModel.Tbl_Teacher" />
+          <AssociationSet Name="FK_Tbl_AssignCourse_Tbl_Teacher" Association="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Teacher">
+            <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
+            <End Role="Tbl_AssignCourse" EntitySet="Tbl_AssignCourse" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tbl_Project_Tbl_Course" Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Course">
             <End Role="Tbl_Course" EntitySet="Tbl_Course" />
             <End Role="Tbl_Project" EntitySet="Tbl_Project" />
@@ -511,12 +500,17 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             <End Role="Tbl_Student" EntitySet="Tbl_Student" />
             <End Role="Tbl_Project" EntitySet="Tbl_Project" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_Tbl_Project_Tbl_Teacher" Association="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Teacher">
+            <End Role="Tbl_Teacher" EntitySet="Tbl_Teacher" />
+            <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Tbl_Project">
           <Key>
             <PropertyRef Name="PID" />
           </Key>
           <Property Name="PID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TID" Type="Int32" />
           <Property Name="SID" Type="Int32" Nullable="false" />
           <Property Name="CID" Type="Int32" />
           <Property Name="SemesterID" Type="Int32" />
@@ -526,7 +520,37 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
           <NavigationProperty Name="Tbl_File" Relationship="DIU_App_StoreModel.FK_Tbl_File_Tbl_Project" FromRole="Tbl_Project" ToRole="Tbl_File" />
           <NavigationProperty Name="Tbl_Semester" Relationship="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Semester" FromRole="Tbl_Project" ToRole="Tbl_Semester" />
           <NavigationProperty Name="Tbl_Student" Relationship="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Student" FromRole="Tbl_Project" ToRole="Tbl_Student" />
+          <NavigationProperty Name="Tbl_Teacher" Relationship="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Teacher" FromRole="Tbl_Project" ToRole="Tbl_Teacher" />
         </EntityType>
+        <EntityType Name="Tbl_Teacher">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tdignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TInitial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TuserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tpassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Tbl_AssignCourse" Relationship="DIU_App_StoreModel.FK_Tbl_AssignCourse_Tbl_Teacher" FromRole="Tbl_Teacher" ToRole="Tbl_AssignCourse" />
+          <NavigationProperty Name="Tbl_Project" Relationship="DIU_App_StoreModel.FK_Tbl_Project_Tbl_Teacher" FromRole="Tbl_Teacher" ToRole="Tbl_Project" />
+        </EntityType>
+        <Association Name="FK_Tbl_AssignCourse_Tbl_Teacher">
+          <End Type="DIU_App_StoreModel.Tbl_Teacher" Role="Tbl_Teacher" Multiplicity="1" />
+          <End Type="DIU_App_StoreModel.Tbl_AssignCourse" Role="Tbl_AssignCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Tbl_AssignCourse">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tbl_Project_Tbl_Course">
           <End Type="DIU_App_StoreModel.Tbl_Course" Role="Tbl_Course" Multiplicity="0..1" />
           <End Type="DIU_App_StoreModel.Tbl_Project" Role="Tbl_Project" Multiplicity="*" />
@@ -575,7 +599,19 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Tbl_Project_Tbl_Teacher">
+          <End Type="DIU_App_StoreModel.Tbl_Teacher" Role="Tbl_Teacher" Multiplicity="0..1" />
+          <End Type="DIU_App_StoreModel.Tbl_Project" Role="Tbl_Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Teacher">
+              <PropertyRef Name="TID" />
+            </Principal>
+            <Dependent Role="Tbl_Project">
+              <PropertyRef Name="TID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -655,22 +691,6 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Teacher">
-            <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Teacher">
-              <MappingFragment StoreEntitySet="Tbl_Teacher">
-                <ScalarProperty Name="TID" ColumnName="TID" />
-                <ScalarProperty Name="Tname" ColumnName="Tname" />
-                <ScalarProperty Name="TEid" ColumnName="TEid" />
-                <ScalarProperty Name="Tdignation" ColumnName="Tdignation" />
-                <ScalarProperty Name="TInitial" ColumnName="TInitial" />
-                <ScalarProperty Name="TEmail" ColumnName="TEmail" />
-                <ScalarProperty Name="Tphone" ColumnName="Tphone" />
-                <ScalarProperty Name="TuserName" ColumnName="TuserName" />
-                <ScalarProperty Name="Tpassword" ColumnName="Tpassword" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_UserInfo">
             <EntityTypeMapping TypeName="DIU_App_StoreModel.tbl_UserInfo">
               <MappingFragment StoreEntitySet="tbl_UserInfo">
@@ -701,7 +721,24 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
                 <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
                 <ScalarProperty Name="CID" ColumnName="CID" />
                 <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Teacher">
+            <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Teacher">
+              <MappingFragment StoreEntitySet="Tbl_Teacher">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Tpassword" ColumnName="Tpassword" />
+                <ScalarProperty Name="TuserName" ColumnName="TuserName" />
+                <ScalarProperty Name="Tphone" ColumnName="Tphone" />
+                <ScalarProperty Name="TEmail" ColumnName="TEmail" />
+                <ScalarProperty Name="TInitial" ColumnName="TInitial" />
+                <ScalarProperty Name="Tdignation" ColumnName="Tdignation" />
+                <ScalarProperty Name="TEid" ColumnName="TEid" />
+                <ScalarProperty Name="Tname" ColumnName="Tname" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

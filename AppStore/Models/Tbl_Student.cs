@@ -34,7 +34,7 @@ namespace AppStore.Models
         public string Stid { get; set; }
         [Required(ErrorMessage = "Your Batch")]
         [Display(Name = "Batch Number")]
-        [Range(1,999)]
+        [Range(1, 999)]
         public Nullable<int> Sbatch { get; set; }
         [Required]
         [Display(Name = "E-mail")]
@@ -44,7 +44,7 @@ namespace AppStore.Models
         [Required]
         [Display(Name = "Mobile Number")]
         [StringLength(14, ErrorMessage = "Maximum 14 character minimum 8", MinimumLength = 8)]
-        [RegularExpression("([0-9]+)",ErrorMessage = "only number")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "only number")]
         public string Sphone { get; set; }
         [Required(ErrorMessage = "Provide your username")]
         [Display(Name = "User Name")]
@@ -55,7 +55,6 @@ namespace AppStore.Models
         [Display(Name = "Password")]
         [StringLength(45, ErrorMessage = "Maximum 45 character minimum 6", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        
         public string Spassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

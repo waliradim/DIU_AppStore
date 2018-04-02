@@ -75,22 +75,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_Teacher">
-      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Teacher">
-        <MappingFragment StoreEntitySet="Tbl_Teacher">
-          <ScalarProperty Name="TID" ColumnName="TID" />
-          <ScalarProperty Name="Tname" ColumnName="Tname" />
-          <ScalarProperty Name="TEid" ColumnName="TEid" />
-          <ScalarProperty Name="Tdignation" ColumnName="Tdignation" />
-          <ScalarProperty Name="TInitial" ColumnName="TInitial" />
-          <ScalarProperty Name="TEmail" ColumnName="TEmail" />
-          <ScalarProperty Name="Tphone" ColumnName="Tphone" />
-          <ScalarProperty Name="TuserName" ColumnName="TuserName" />
-          <ScalarProperty Name="Tpassword" ColumnName="Tpassword" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tbl_UserInfo">
       <EntityTypeMapping TypeName="DIU_App_StoreModel.tbl_UserInfo">
         <MappingFragment StoreEntitySet="tbl_UserInfo">
@@ -121,7 +105,24 @@
           <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="SID" ColumnName="SID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
           <ScalarProperty Name="PID" ColumnName="PID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Teacher">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Teacher">
+        <MappingFragment StoreEntitySet="Tbl_Teacher">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Tpassword" ColumnName="Tpassword" />
+          <ScalarProperty Name="TuserName" ColumnName="TuserName" />
+          <ScalarProperty Name="Tphone" ColumnName="Tphone" />
+          <ScalarProperty Name="TEmail" ColumnName="TEmail" />
+          <ScalarProperty Name="TInitial" ColumnName="TInitial" />
+          <ScalarProperty Name="Tdignation" ColumnName="Tdignation" />
+          <ScalarProperty Name="TEid" ColumnName="TEid" />
+          <ScalarProperty Name="Tname" ColumnName="Tname" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

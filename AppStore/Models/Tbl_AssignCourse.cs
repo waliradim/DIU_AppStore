@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace AppStore.Models
 {
     using System;
@@ -15,9 +17,14 @@ namespace AppStore.Models
     public partial class Tbl_AssignCourse
     {
         public int id { get; set; }
+        
         public int TID { get; set; }
+        [Required]
+        [Display(Name = "Semester")]
         public int LID { get; set; }
+        [Display(Name = "Level")]
         public int SemesterID { get; set; }
+        [Display(Name = "Course")]
         public int CID { get; set; }
     
         public virtual Tbl_Course Tbl_Course { get; set; }

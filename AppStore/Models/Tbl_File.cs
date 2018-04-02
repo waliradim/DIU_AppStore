@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.Web.Optimization;
+
 namespace AppStore.Models
 {
     using System;
@@ -16,6 +19,10 @@ namespace AppStore.Models
     {
         public int FID { get; set; }
         public int PID { get; set; }
+        [Required]
+        [Display(Name = "File-1")]
+        [DataType(DataType.Upload)]
+        [FileExtensions(Extensions = "zip,rar" ,ErrorMessage = "Error... only zip and rar file")]
         public string Ffile1 { get; set; }
         public string Ffile2 { get; set; }
         public string Photo1 { get; set; }

@@ -23,16 +23,17 @@ namespace AppStore.Models
         }
     
         public int PID { get; set; }
+        public Nullable<int> TID { get; set; }
         public int SID { get; set; }
         public Nullable<int> CID { get; set; }
         public Nullable<int> SemesterID { get; set; }
-        [Required(ErrorMessage = "Please Insert a Project Name")]
+        [Required(ErrorMessage = "your project name")]
         [Display(Name = "Project Name")]
-        [StringLength(245, ErrorMessage = "Maximum 245 character minimum 3", MinimumLength = 3)]
+        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
         [DataType(DataType.Text)]
         public string Pname { get; set; }
-        [Display(Name = "Project Detils")]
-        [StringLength(245, ErrorMessage = "Maximum 245 character")]
+        [Display(Name = "Project Details")]
+        [StringLength(245, ErrorMessage = "Maximum 245 character minimum 3", MinimumLength = 3)]
         [DataType(DataType.Text)]
         public string Pdetils { get; set; }
     
@@ -41,5 +42,6 @@ namespace AppStore.Models
         public virtual ICollection<Tbl_File> Tbl_File { get; set; }
         public virtual Tbl_Semester Tbl_Semester { get; set; }
         public virtual Tbl_Student Tbl_Student { get; set; }
+        public virtual Tbl_Teacher Tbl_Teacher { get; set; }
     }
 }

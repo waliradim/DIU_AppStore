@@ -24,7 +24,7 @@ namespace AppStore.Models
         }
     
         public int SemesterID { get; set; }
-        [Required(ErrorMessage ="Please Insert Semester Name" )]
+        [Required(ErrorMessage = "Please Insert Semester Name")]
         [Display(Name = "Semester Name")]
         [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
         [DataType(DataType.Text)]

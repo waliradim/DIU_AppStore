@@ -28,7 +28,7 @@ namespace AppStore.Models
         [Required]
         [Display(Name = "Course Code")]
         [StringLength(7, ErrorMessage = "Maximum 7 character minimum 3", MinimumLength = 3)]
-        [DataType(DataType.Text)]
+        
         public string CourseCode { get; set; }
         [Required]
         [Display(Name = "Course Name")]
