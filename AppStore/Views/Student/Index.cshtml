@@ -2,44 +2,31 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_TeacherLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
 }
 
-<h2>Index</h2>
+<h2>All Courses</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            Course Id
-        </th>
+
+   <div align="center">
+    @foreach (var item in Model)
+    {
         
-        <th>
-            Teacher Name
-        </th>
-        <th>
-            Course Name
-        </th>
-        <th>
-            Semester Name
-        </th>
-    </tr>
-
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.CID
-            </td>
-            
-            <td>
-                @item.TeacherName
-            </td>
-            <td>
-                @item.CourseName
-            </td>
-            <td>
-                @item.SemesterName
-            </td>
-        </tr>
+        <div class="row">
+            <div class="col-md-4 col-xl-4 col-sm-6">
+                <div class="card1">
+                    <div class="container1">
+                        <h2><b>@item.CourseName </b></h2> 
+                        <h3>@item.SemesterName </h3>
+                        <h4>@item.TeacherName </h4>
+                        @Html.ActionLink("Submit Project", "#", "#", new { cid = item.CID, sid = item.TID })<span>|</span> 
+                        
+                        @Html.ActionLink("View Detiles", "#", "#",new {})
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
     }
+   </div>
 
-</table>

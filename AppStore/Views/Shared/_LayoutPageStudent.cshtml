@@ -5,10 +5,13 @@
 
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="~/Style/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Style/StyleSheet.css" rel="stylesheet" type="text/css"/>
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body style="background-color: #AF9E9E">
 
@@ -38,9 +41,9 @@
                 </div>
                 <div class="navbar-collapse collapse fontSize">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "#", "Teacher")</li>
-                        <li>@Html.ActionLink("Project", "Project", "Home")</li>
-                        <li>@Html.ActionLink("Assign Course", "AssignCourse", "Teacher")</li>
+                        <li>@Html.ActionLink("Home", "Index", "Student")</li>
+                        <li>@Html.ActionLink("Project", "Index", "Student")</li>
+                        <li>@Html.ActionLink("Course", "#", "Student")</li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -67,8 +70,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    
 </body>
 </html>
