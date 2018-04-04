@@ -1,0 +1,67 @@
+﻿@model AppStore.Models.Tbl_File
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_File</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ffile1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ffile1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ffile2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ffile2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Project.Pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Project.Pname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

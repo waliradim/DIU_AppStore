@@ -34,7 +34,7 @@ namespace AppStore.Models
         public string Pname { get; set; }
         [Display(Name = "Project Details")]
         [StringLength(245, ErrorMessage = "Maximum 245 character minimum 3", MinimumLength = 3)]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         public string Pdetils { get; set; }
     
         public virtual Tbl_Course Tbl_Course { get; set; }

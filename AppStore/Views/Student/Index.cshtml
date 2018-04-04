@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
 }
 
 <h2>All Courses</h2>
@@ -19,9 +19,16 @@
                         <h2><b>@item.CourseName </b></h2> 
                         <h3>@item.SemesterName </h3>
                         <h4>@item.TeacherName </h4>
-                        @Html.ActionLink("Submit Project", "#", "#", new { cid = item.CID, sid = item.TID })<span>|</span> 
+                        <p>
+                            @item.TID-@item.CID-@item.SID
+                        </p>
+
+                        @Html.ActionLink("Submit Project", "Submit", new { cid = item.CID, sid = item.SID,tid=item.TID })
+                        <span>|</span>
+
+                        @Html.ActionLink("View Detiles", "Insert", "Project")
                         
-                        @Html.ActionLink("View Detiles", "#", "#",new {})
+
                     </div>
                 </div>
                 <br /><br />

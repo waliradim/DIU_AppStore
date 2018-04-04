@@ -13,15 +13,5 @@ namespace AppStore.Controllers
         {
             return View();
         }
-
-        public ActionResult Project()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
-        }
     }
 }

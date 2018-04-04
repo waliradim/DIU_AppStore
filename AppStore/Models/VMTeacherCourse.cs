@@ -11,7 +11,9 @@ namespace AppStore.Models
         public string SemesterName { get; set; }
         public int TID { get; set; }
         public int CID { get; set; }
+        public int SID { get; set; }
         public string TeacherName { get; set; }
         public string CourseName { get; set; }
+
     }
 }

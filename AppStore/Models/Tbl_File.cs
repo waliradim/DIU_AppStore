@@ -8,6 +8,7 @@
 //------------------------------------------------------------------------------
 
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using System.Web.Optimization;
 
 namespace AppStore.Models
@@ -20,13 +21,28 @@ namespace AppStore.Models
         public int FID { get; set; }
         public int PID { get; set; }
         [Required]
-        [Display(Name = "File-1")]
+        [Display(Name = "Project File")]
         [DataType(DataType.Upload)]
-        [FileExtensions(Extensions = "zip,rar" ,ErrorMessage = "Error... only zip and rar file")]
+        [FileExtensions(Extensions = ".zip" ,ErrorMessage = "Error... only zip file")]
         public string Ffile1 { get; set; }
+        [Required]
+        [Display(Name = "Document File")]
+        [DataType(DataType.Upload)]
+        [FileExtensions(Extensions = ".pdf", ErrorMessage = "Error... only pdf file")]
         public string Ffile2 { get; set; }
+        
+        [Display(Name = "Photo-1")]
+        [DataType(DataType.Upload)]
+        [FileExtensions(Extensions = ".jpg, .PNG", ErrorMessage = "Error... only jpg or png file")]
         public string Photo1 { get; set; }
+        
+        [Display(Name = "Photo-2")]
+        [DataType(DataType.Upload)]
+        [FileExtensions(Extensions = ".jpg, .PNG", ErrorMessage = "Error... only jpg or png file")]
         public string Photo2 { get; set; }
+        [Display(Name = "Video URL")]
+        [DataType(DataType.Url)]
+        [MaxLength(48,ErrorMessage = "URL length not more then 45 charactr")]
         public string Url { get; set; }
     
         public virtual Tbl_Project Tbl_Project { get; set; }

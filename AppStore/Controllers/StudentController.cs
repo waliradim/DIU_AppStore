@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,15 +16,16 @@ namespace AppStore.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            var teacherCourse = db.Tbl_AssignCourse.Select(a => new VMTeacherCourse()
+            var course = db.Tbl_AssignCourse.Select(a => new VMTeacherCourse()
             {
                 CID = a.CID,
                 TID = a.TID,
+                 SID=a.SemesterID,
                 CourseName = a.Tbl_Course.CourseName,
                 TeacherName = a.Tbl_Teacher.Tname,
                 SemesterName = a.Tbl_Semester.SemesterName
             }).ToList();
-            return View(teacherCourse);
+            return View(course);
         }
 
         public ActionResult Registation()
@@ -80,6 +83,71 @@ namespace AppStore.Controllers
             return View();
         }
 
+        public ActionResult Submit()
+        {
+            return View();
+        }
 
+
+        [HttpPost]
+        public ActionResult Submit(int cid, int sid, int tid, ProjectViewModels projView)
+        {
+            
+                int stid = Convert.ToInt32(Session["id"]);
+            
+                var project = new Tbl_Project()
+            {
+                SID = stid,
+                TID = tid,
+                CID = cid,
+                SemesterID = sid,
+                Pname = projView.PName,
+                Pdetils = projView.PDetails,
+
+            };
+            db.Tbl_Project.Add(project);
+            db.SaveChanges();
+
+            int pid = project.PID;
+
+            var file = new Tbl_File()
+            {
+                PID=pid,
+                Ffile1 = SaveFile(projView.Fil1),
+                Ffile2 = SaveFile(projView.Fil2),
+                Photo1 = SaveFile(projView.Pho1),
+                Photo2 = SaveFile(projView.Pho2),
+                Url = projView.Url
+            };
+            db.Tbl_File.Add(file);
+            db.SaveChanges();
+                  
+                
+                return View();
+            
+        }
+
+        
+
+
+        private string SaveFile(HttpPostedFileBase file1)
+        {
+            
+                if (file1.ContentLength > 0)
+            {
+                var fileName =Path.GetFileName(file1.FileName);
+                var path = Path.Combine(Server.MapPath("~/UplodeFile"), fileName);
+                file1.SaveAs(path);
+                return path;
+            }
+                else
+                {
+                    RedirectToAction("Index");
+                }
+
+
+            return string.Empty;
+        }
+        
     }
 }

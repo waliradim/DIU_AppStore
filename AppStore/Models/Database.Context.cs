@@ -35,5 +35,7 @@ namespace AppStore.Models
         public virtual DbSet<tbl_UserInfo> tbl_UserInfo { get; set; }
         public virtual DbSet<Tbl_Project> Tbl_Project { get; set; }
         public virtual DbSet<Tbl_Teacher> Tbl_Teacher { get; set; }
+
+        public System.Data.Entity.DbSet<AppStore.Models.ProjectViewModels> ProjectViewModels { get; set; }
     }
 }
