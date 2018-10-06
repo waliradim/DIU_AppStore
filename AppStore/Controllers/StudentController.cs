@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AppStore.Models;
+using Microsoft.Owin;
 
 namespace AppStore.Controllers
 {
@@ -23,14 +24,23 @@ namespace AppStore.Controllers
                  SID=a.SemesterID,
                 CourseName = a.Tbl_Course.CourseName,
                 TeacherName = a.Tbl_Teacher.Tname,
-                SemesterName = a.Tbl_Semester.SemesterName
+                SemesterName = a.Tbl_Semester.SemesterName,
+               
             }).ToList();
             return View(course);
+        }
+
+        public ActionResult ProjectList()
+        {
+            var ProjectList = db.Tbl_Project.ToList();
+
+            return View();
         }
 
         public ActionResult Registation()
         {
             return View();
+            
         }
 
         
@@ -83,24 +93,34 @@ namespace AppStore.Controllers
             return View();
         }
 
-        public ActionResult Submit()
+        [HttpGet]
+        public ActionResult Submit(int cid, int sid, int tid)
         {
+            ViewBag.CID = cid;
+            ViewBag.SemId = sid;
+            ViewBag.TID = tid;
             return View();
         }
 
 
+        
+
+
         [HttpPost]
-        public ActionResult Submit(int cid, int sid, int tid, ProjectViewModels projView)
+        [ValidateAntiForgeryToken]
+        public ActionResult Submit(ProjectViewModels projView)
         {
             
                 int stid = Convert.ToInt32(Session["id"]);
-            
-                var project = new Tbl_Project()
+            //int cid = ViewBag.CID;
+            //int sid = ViewBag.SID;
+            //int tid = ViewBag.TID;
+            var project = new Tbl_Project()
             {
                 SID = stid,
-                TID = tid,
-                CID = cid,
-                SemesterID = sid,
+                TID =projView.Tid ,
+                CID = projView.Cid,
+                SemesterID = projView.Sid,
                 Pname = projView.PName,
                 Pdetils = projView.PDetails,
 
@@ -108,46 +128,102 @@ namespace AppStore.Controllers
             db.Tbl_Project.Add(project);
             db.SaveChanges();
 
+
+            //var fileName = Path.GetFileName(Fil1.FileName);
+            //var path = Path.Combine(Server.MapPath("~/UplodeFile/") + fileName);
+            //Fil1.SaveAs(path);
+
             int pid = project.PID;
 
             var file = new Tbl_File()
             {
                 PID=pid,
-                Ffile1 = SaveFile(projView.Fil1),
-                Ffile2 = SaveFile(projView.Fil2),
-                Photo1 = SaveFile(projView.Pho1),
-                Photo2 = SaveFile(projView.Pho2),
+                Ffile1 = SaveFile1((projView.ProjectReport[0])),
+                Ffile2 = SaveFile1(projView.ProjectFile[0]),
+                Photo1 = SaveFile1(projView.ProjectScreenshot1[0]),
+                Photo2 = SaveFile1(projView.ProjectScreenshot2[0]),
                 Url = projView.Url
             };
             db.Tbl_File.Add(file);
             db.SaveChanges();
-                  
-                
-                return View();
+
             
+
+            return RedirectToAction("Index","Project");
+            //RedirectToAction("Index");
+
         }
 
         
 
 
-        private string SaveFile(HttpPostedFileBase file1)
+        private string SaveFile1( HttpPostedFileBase file1)
         {
+            //try
+            //{
+                
+                if (file1 != null && file1.ContentLength > 0)
+                {
+
+                //    var path1 = Path.Combine(Server.MapPath("~/UplodeFile/"), Path.GetFileName(Guid.NewGuid().ToString() + file1.FileName));
+                //file1.SaveAs(path1);
+
+
+                var fileName = Path.GetFileName(Guid.NewGuid().ToString() + file1.FileName);
+                var path = "~/UplodeFile/" + fileName;
+                file1.SaveAs(Server.MapPath(path));
+                return path;
+                }
             
-                if (file1.ContentLength > 0)
+            
+            return string.Empty;
+        }
+
+        private string SaveFile2(HttpPostedFileBase file2)
+        {
+           
+                if (file2 != null && file2.ContentLength > 0)
             {
-                var fileName =Path.GetFileName(file1.FileName);
-                var path = Path.Combine(Server.MapPath("~/UplodeFile"), fileName);
-                file1.SaveAs(path);
+                var fileName = Path.GetFileName(Guid.NewGuid().ToString()+ file2.FileName);
+                var path = Path.Combine(Server.MapPath("~/UplodeFile/")+fileName);
+                file2.SaveAs(path);
                 return path;
             }
-                else
-                {
-                    RedirectToAction("Index");
-                }
-
 
             return string.Empty;
         }
-        
+
+        private string SaveFile3( HttpPostedFileBase Pho1)
+        {
+
+            if (Pho1 != null && Pho1.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(Pho1.FileName);
+                var path = Path.Combine(Server.MapPath("~/UplodeFile/")+ fileName);
+                Pho1.SaveAs(path);
+                return path;
+            }
+
+            return string.Empty;
+        }
+
+
+        private string SaveFile4( HttpPostedFileBase Pho2)
+        {
+
+            if (Pho2 != null && Pho2.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(Pho2.FileName);
+                var path = Path.Combine(Server.MapPath("~/UplodeFile/")+ fileName);
+                Pho2.SaveAs(path);
+                return path;
+            }
+
+            return string.Empty;
+        }
+
+
+
+        //end backet work 
     }
 }

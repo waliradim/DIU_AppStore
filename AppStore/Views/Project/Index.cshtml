@@ -1,62 +1,51 @@
-﻿@model IEnumerable<AppStore.Models.Tbl_File>
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<AppStore.Models.Tbl_File>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<section style=" margin-top: 50px; margin-bottom: 50px">
+    @using (Html.BeginForm("Search", "Project", FormMethod.Post))
+    { 
+    
+    <div class="form-control" style="text-align: center">
+        Project name : <input type="text" id="pname" name="pname" />
+        <input type="submit" id="submitId" value="Search" />
+    </div>
+    
+    }
+</section>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ffile1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ffile2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Url)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Tbl_Project.Pname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Project.Pdetils)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ffile1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ffile2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Url)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Tbl_Project.Pname)
         </td>
+        <td> 
+            @Html.DisplayFor(modelItem => item.Tbl_Project.Pdetils)
+        </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FID })
+           
+            @Html.ActionLink("Details", "Details", new { id = item.FID })
+            
         </td>
     </tr>
 }

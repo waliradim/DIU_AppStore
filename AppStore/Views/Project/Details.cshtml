@@ -8,15 +8,31 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Tbl_File</h4>
+    
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Project.Pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Project.Pname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Project.Pdetils)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Project.Pdetils)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Ffile1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ffile1)
+            
+            <a href="@Url.Content(Model.Ffile1)" target="_blank"> Downlode</a>
+
         </dd>
 
         <dt>
@@ -24,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ffile2)
+            <a href="@Url.Content(Model.Ffile2)" target="_blank"> Downlode</a>
         </dd>
 
         <dt>
@@ -32,7 +48,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Photo1)
+            
+            <img src="@Url.Content(Model.Photo1)" width="200" height="200" />
+            <a href="@Url.Content(Model.Photo1)" target="_blank">down</a>
         </dd>
 
         <dt>
@@ -40,7 +58,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Photo2)
+            <img src="@Url.Content(Model.Photo2)" width="200" height="200" />
+            <a href="@Url.Content(Model.Photo2)" target="_blank">down</a>
         </dd>
 
         <dt>
@@ -51,17 +70,11 @@
             @Html.DisplayFor(model => model.Url)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tbl_Project.Pname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tbl_Project.Pname)
-        </dd>
+        
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FID }) |
+   
     @Html.ActionLink("Back to List", "Index")
 </p>

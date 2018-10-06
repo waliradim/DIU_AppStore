@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppStore.BundleConfig" Collapsed="true">
+    <Position X="9.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.FilterConfig" Collapsed="true">
+    <Position X="4.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.EmailService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppStore.SmsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="AppStore.ApplicationUserManager" Collapsed="true">
+    <Position X="8" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.ApplicationSignInManager" Collapsed="true">
+    <Position X="4.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.RouteConfig" Collapsed="true">
+    <Position X="2.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Startup" Collapsed="true">
+    <Position X="6.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\Startup.Auth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.MvcApplication" Collapsed="true">
+    <Position X="6.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.AdminController">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAgQAAAAAAAABCAAAwAAAAAAEAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AdminController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.HomeController" Collapsed="true">
+    <Position X="4.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.ProjectController">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.StudentController">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAYAAAAAAAAAAAAAAAAAAAABAEQAQAAAAA=</HashCode>
+      <FileName>Controllers\StudentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.Tbl_AssignCourseController">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\Tbl_AssignCourseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.TeacherController">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAQAgAAAAAAAAABAAACAAAAAAEABAAAAEA=</HashCode>
+      <FileName>Controllers\TeacherController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Controllers.UserAccountController">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAQAgAAABAAAAIQAAAAAAAAAAEQAAAAAAA=</HashCode>
+      <FileName>Controllers\UserAccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.AdminModels">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\AdminModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.DIU_App_StoreEntities">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAKAAAAAAAAAABBAAAAAAEACAAAAAABDAEAABAiA=</HashCode>
+      <FileName>Models\Database.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.sysdiagram" Collapsed="true">
+    <Position X="8" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\sysdiagram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_AssignCourse">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAABBAAAAAAgAAAAABAABAAAAAACkg=</HashCode>
+      <FileName>Models\Tbl_AssignCourse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Course">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAIAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAkA=</HashCode>
+      <FileName>Models\Tbl_Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_File" Collapsed="true">
+    <Position X="9.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAACAAAAAAAAAAAAAAAAAACCAAAACAAgA=</HashCode>
+      <FileName>Models\Tbl_File.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Language" Collapsed="true">
+    <Position X="2.75" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACgAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Tbl_Language.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_LanguageTag" Collapsed="true">
+    <Position X="4.5" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAQIAAAAAAAABAgA=</HashCode>
+      <FileName>Models\Tbl_LanguageTag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Level" Collapsed="true">
+    <Position X="6.25" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAABAAAAAAAAAAAAAAAAAAACAAAAg=</HashCode>
+      <FileName>Models\Tbl_Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Project" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAABAAAAAAgACAAABAABDAAEDACEA=</HashCode>
+      <FileName>Models\Tbl_Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Semester" Collapsed="true">
+    <Position X="2.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAACAAAAAAgAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Tbl_Semester.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Student" Collapsed="true">
+    <Position X="4" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAEAAAAAAAAAAAAAAAAAEAAAACAAAiAAAAAABEAgA=</HashCode>
+      <FileName>Models\Tbl_Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Teacher" Collapsed="true">
+    <Position X="5.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAKAAAAAEBAAAEAAAAAgAAAAAAAAAAAAiIAAACgA=</HashCode>
+      <FileName>Models\Tbl_Teacher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.tbl_UserInfo" Collapsed="true">
+    <Position X="7.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAEAgABEAAAAAABQAAAAAAAQA=</HashCode>
+      <FileName>Models\tbl_UserInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.DbContextModels">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DbContextModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.ApplicationUser" Collapsed="true">
+    <Position X="6.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.ApplicationDbContext" Collapsed="true">
+    <Position X="2.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.ProjectViewModels">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQQAAAABAAAAAABCAGAAAAAAAAAAACSAAAAAAAAAI=</HashCode>
+      <FileName>Models\ProjectViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.Tbl_Level_CourseModels" Collapsed="true">
+    <Position X="11" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAAAAAEg=</HashCode>
+      <FileName>Models\Tbl_Level-CourseModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.UserRegInfoModel">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAEAgABEAAAAAABQAAAAAAAQA=</HashCode>
+      <FileName>Models\UserRegInfoModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppStore.Models.VMTeacherCourse" Collapsed="true">
+    <Position X="8" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAECAAAAAAAAAAAAAAAAAAAABACEA=</HashCode>
+      <FileName>Models\VMTeacherCourse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

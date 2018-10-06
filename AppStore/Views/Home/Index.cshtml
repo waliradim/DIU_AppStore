@@ -1,0 +1,36 @@
+﻿@using AppStore.Models
+@model IEnumerable<AppStore.Models.VMHomeView>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+
+
+<h3>Today : @DateTime.Today.ToString("D")</h3>
+
+<section class="section nav-fill">
+    <div align="center">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                @foreach (var item in Model)
+            {
+                    <div class="card2">
+
+                        <div class="container1">
+                            <h3>Project Name :<b>@item.ProjectName</b></h3>
+                            <h4>@item.CourseCode - @item.CourseName</h4>
+                            <h4>Teacher :<b>@item.TeacherName</b></h4>
+                            <h4>Student :<b>@item.StudentName</b></h4>
+                            @Html.ActionLink("Details", "Details", "Project", new { id = item.Pid },null)
+                        </div>
+                    </div><br /><br />
+
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>

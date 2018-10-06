@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AppStore.Models.Tbl_Semester>
+
+@{
+    ViewBag.Title = "ViewSemester";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>View Semester</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SemesterName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SemesterName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SemesterID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SemesterID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SemesterID })
+        </td>
+    </tr>
+}
+
+</table>

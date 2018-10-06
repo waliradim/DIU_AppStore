@@ -17,7 +17,6 @@ namespace AppStore.Models
     public partial class Tbl_AssignCourse
     {
         public int id { get; set; }
-        
         public int TID { get; set; }
         [Required]
         [Display(Name = "Semester")]
@@ -26,6 +25,8 @@ namespace AppStore.Models
         public int SemesterID { get; set; }
         [Display(Name = "Course")]
         public int CID { get; set; }
+        [Display(Name = "Last Date of Submit")]
+        public Nullable<System.DateTime> LastDate { get; set; }
     
         public virtual Tbl_Course Tbl_Course { get; set; }
         public virtual Tbl_Level Tbl_Level { get; set; }

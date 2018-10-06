@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AppStore.Models.Tbl_Project>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+}
+
+<section style=" margin-top: 50px; margin-bottom: 50px">
+    @using (Html.BeginForm("Search", "Project", FormMethod.Post))
+    { 
+    
+        <div class="form-control" style="text-align: center">
+            Project name : <input type="text" id="pname" name="pname" />
+            <input type="submit" id="submitId" value="Search" />
+        </div>
+    
+    }
+</section>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pdetils)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pdetils)
+        </td>
+       
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.PID }) |
+            
+        </td>
+    </tr>
+}
+
+</table>

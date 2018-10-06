@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace AppStore.Models
 {
     using System;
@@ -20,6 +18,7 @@ namespace AppStore.Models
         public Tbl_Project()
         {
             this.Tbl_File = new HashSet<Tbl_File>();
+            this.Tbl_LanguageTag = new HashSet<Tbl_LanguageTag>();
         }
     
         public int PID { get; set; }
@@ -27,21 +26,16 @@ namespace AppStore.Models
         public int SID { get; set; }
         public Nullable<int> CID { get; set; }
         public Nullable<int> SemesterID { get; set; }
-        [Required(ErrorMessage = "your project name")]
-        [Display(Name = "Project Name")]
-        [StringLength(45, ErrorMessage = "Maximum 45 character minimum 3", MinimumLength = 3)]
-        [DataType(DataType.Text)]
         public string Pname { get; set; }
-        [Display(Name = "Project Details")]
-        [StringLength(245, ErrorMessage = "Maximum 245 character minimum 3", MinimumLength = 3)]
-        [DataType(DataType.MultilineText)]
         public string Pdetils { get; set; }
     
         public virtual Tbl_Course Tbl_Course { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_File> Tbl_File { get; set; }
         public virtual Tbl_Semester Tbl_Semester { get; set; }
         public virtual Tbl_Student Tbl_Student { get; set; }
         public virtual Tbl_Teacher Tbl_Teacher { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_File> Tbl_File { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_LanguageTag> Tbl_LanguageTag { get; set; }
     }
 }

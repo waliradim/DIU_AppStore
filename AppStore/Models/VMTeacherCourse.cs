@@ -14,6 +14,7 @@ namespace AppStore.Models
         public int SID { get; set; }
         public string TeacherName { get; set; }
         public string CourseName { get; set; }
+        public DateTime date { get; set; }
 
     }
 }

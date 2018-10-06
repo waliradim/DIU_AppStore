@@ -2,38 +2,41 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
 }
 
 <h2>All Courses</h2>
 
 
-   <div align="center">
-    @foreach (var item in Model)
-    {
-        
-        <div class="row">
-            <div class="col-md-4 col-xl-4 col-sm-6">
-                <div class="card1">
-                    <div class="container1">
-                        <h2><b>@item.CourseName </b></h2> 
-                        <h3>@item.SemesterName </h3>
-                        <h4>@item.TeacherName </h4>
-                        <p>
-                            @item.TID-@item.CID-@item.SID
-                        </p>
+<div align="center">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+        @foreach (var item in Model)
+        {
 
-                        @Html.ActionLink("Submit Project", "Submit", new { cid = item.CID, sid = item.SID,tid=item.TID })
-                        <span>|</span>
 
-                        @Html.ActionLink("View Detiles", "Insert", "Project")
-                        
+            @*<div class="col-md-4 col-xl-4 col-sm-6">*@
 
-                    </div>
+            <div class="card1">
+                
+                <div class="container1">
+                    <h2><b>@item.CourseName </b></h2>
+                    <h3>@item.SemesterName </h3>
+                    <h4>@item.TeacherName </h4>
+                    
+                    @Html.ActionLink("Submit Project", "Submit", new {cid = item.CID, sid = item.SID, tid = item.TID})
+                    <span>|</span>
+
+                    @Html.ActionLink("View Detiles", "Insert", "Project")
+
+
                 </div>
-                <br /><br />
             </div>
+                <br/><br/>
+            @*</div>*@
+
+        }
         </div>
-    }
-   </div>
+    </div>
+</div>
 

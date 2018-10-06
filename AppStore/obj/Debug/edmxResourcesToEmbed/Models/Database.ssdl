@@ -19,6 +19,7 @@
     <Property Name="LID" Type="int" Nullable="false" />
     <Property Name="SemesterID" Type="int" Nullable="false" />
     <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="LastDate" Type="date" />
   </EntityType>
   <EntityType Name="Tbl_Course">
     <Key>
@@ -34,11 +35,26 @@
     </Key>
     <Property Name="FID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PID" Type="int" Nullable="false" />
-    <Property Name="Ffile1" Type="varchar" MaxLength="50" />
-    <Property Name="Ffile2" Type="varchar" MaxLength="50" />
-    <Property Name="Photo1" Type="varchar" MaxLength="50" />
-    <Property Name="Photo2" Type="varchar" MaxLength="50" />
-    <Property Name="Url" Type="varchar" MaxLength="50" />
+    <Property Name="Ffile1" Type="varchar(max)" />
+    <Property Name="Ffile2" Type="varchar(max)" />
+    <Property Name="Photo1" Type="varchar(max)" />
+    <Property Name="Photo2" Type="varchar(max)" />
+    <Property Name="Url" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Tbl_Language">
+    <Key>
+      <PropertyRef Name="LanguageID" />
+    </Key>
+    <Property Name="LanguageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageName" Type="varchar" MaxLength="240" />
+  </EntityType>
+  <EntityType Name="Tbl_LanguageTag">
+    <Key>
+      <PropertyRef Name="TagID" />
+    </Key>
+    <Property Name="TagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguageID" Type="int" />
+    <Property Name="ProjectID" Type="int" />
   </EntityType>
   <EntityType Name="Tbl_Level">
     <Key>
@@ -177,6 +193,30 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Tbl_LanguageTag_Tbl_Language">
+    <End Role="Tbl_Language" Type="Self.Tbl_Language" Multiplicity="0..1" />
+    <End Role="Tbl_LanguageTag" Type="Self.Tbl_LanguageTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Language">
+        <PropertyRef Name="LanguageID" />
+      </Principal>
+      <Dependent Role="Tbl_LanguageTag">
+        <PropertyRef Name="LanguageID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_LanguageTag_Tbl_Project">
+    <End Role="Tbl_Project" Type="Self.Tbl_Project" Multiplicity="0..1" />
+    <End Role="Tbl_LanguageTag" Type="Self.Tbl_LanguageTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Project">
+        <PropertyRef Name="PID" />
+      </Principal>
+      <Dependent Role="Tbl_LanguageTag">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Tbl_Level-Course_Tbl_Course">
     <End Role="Tbl_Course" Type="Self.Tbl_Course" Multiplicity="1" />
     <End Role="Tbl_Level-Course" Type="Self.Tbl_Level-Course" Multiplicity="*" />
@@ -254,6 +294,8 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
     <EntitySet Name="Tbl_AssignCourse" EntityType="Self.Tbl_AssignCourse" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Course" EntityType="Self.Tbl_Course" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_File" EntityType="Self.Tbl_File" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Language" EntityType="Self.Tbl_Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_LanguageTag" EntityType="Self.Tbl_LanguageTag" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Level" EntityType="Self.Tbl_Level" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Project" EntityType="Self.Tbl_Project" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Semester" EntityType="Self.Tbl_Semester" Schema="dbo" store:Type="Tables" />
@@ -285,6 +327,14 @@ warning 6002: The table/view 'DIU_App_Store.dbo.Tbl_Level-Course' does not have 
     <AssociationSet Name="FK_Tbl_File_Tbl_Project" Association="Self.FK_Tbl_File_Tbl_Project">
       <End Role="Tbl_Project" EntitySet="Tbl_Project" />
       <End Role="Tbl_File" EntitySet="Tbl_File" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_LanguageTag_Tbl_Language" Association="Self.FK_Tbl_LanguageTag_Tbl_Language">
+      <End Role="Tbl_Language" EntitySet="Tbl_Language" />
+      <End Role="Tbl_LanguageTag" EntitySet="Tbl_LanguageTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_LanguageTag_Tbl_Project" Association="Self.FK_Tbl_LanguageTag_Tbl_Project">
+      <End Role="Tbl_Project" EntitySet="Tbl_Project" />
+      <End Role="Tbl_LanguageTag" EntitySet="Tbl_LanguageTag" />
     </AssociationSet>
     <AssociationSet Name="FK_Tbl_Level-Course_Tbl_Course" Association="Self.FK_Tbl_Level-Course_Tbl_Course">
       <End Role="Tbl_Course" EntitySet="Tbl_Course" />

@@ -24,6 +24,22 @@ namespace AppStore.Controllers
         }
 
 
+        public ActionResult Search(string pname)
+        {
+            if (pname == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var result = db.Tbl_Project.Where(x => x.Pname.Contains(pname)).ToList();
+            if (result == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View( result);
+        }
+
         public ActionResult Insert()
         {
 

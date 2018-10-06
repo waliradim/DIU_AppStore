@@ -73,6 +73,12 @@ namespace AppStore.Controllers
             return View(db.Tbl_Course.ToList());
         }
 
+        public ActionResult ViewSemester()
+        {
+
+            return View(db.Tbl_Semester.ToList());
+        }
+
         
         public ActionResult TeacherAdd(Tbl_Teacher teacher)
         {

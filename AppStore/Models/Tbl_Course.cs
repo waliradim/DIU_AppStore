@@ -19,16 +19,15 @@ namespace AppStore.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tbl_Course()
         {
-            this.Tbl_AssignCourse = new HashSet<Tbl_AssignCourse>();
             this.Tbl_Level = new HashSet<Tbl_Level>();
             this.Tbl_Project = new HashSet<Tbl_Project>();
+            this.Tbl_AssignCourse = new HashSet<Tbl_AssignCourse>();
         }
     
         public int CID { get; set; }
         [Required]
         [Display(Name = "Course Code")]
         [StringLength(7, ErrorMessage = "Maximum 7 character minimum 3", MinimumLength = 3)]
-        
         public string CourseCode { get; set; }
         [Required]
         [Display(Name = "Course Name")]
@@ -37,10 +36,10 @@ namespace AppStore.Models
         public string CourseName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tbl_AssignCourse> Tbl_AssignCourse { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Level> Tbl_Level { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Project> Tbl_Project { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tbl_AssignCourse> Tbl_AssignCourse { get; set; }
     }
 }

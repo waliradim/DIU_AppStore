@@ -12,36 +12,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_AssignCourse">
-      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_AssignCourse">
-        <MappingFragment StoreEntitySet="Tbl_AssignCourse">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="TID" ColumnName="TID" />
-          <ScalarProperty Name="LID" ColumnName="LID" />
-          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
-          <ScalarProperty Name="CID" ColumnName="CID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tbl_Course">
       <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Course">
         <MappingFragment StoreEntitySet="Tbl_Course">
           <ScalarProperty Name="CID" ColumnName="CID" />
           <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
           <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Tbl_File">
-      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_File">
-        <MappingFragment StoreEntitySet="Tbl_File">
-          <ScalarProperty Name="FID" ColumnName="FID" />
-          <ScalarProperty Name="PID" ColumnName="PID" />
-          <ScalarProperty Name="Ffile1" ColumnName="Ffile1" />
-          <ScalarProperty Name="Ffile2" ColumnName="Ffile2" />
-          <ScalarProperty Name="Photo1" ColumnName="Photo1" />
-          <ScalarProperty Name="Photo2" ColumnName="Photo2" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -123,6 +99,48 @@
           <ScalarProperty Name="TEid" ColumnName="TEid" />
           <ScalarProperty Name="Tname" ColumnName="Tname" />
           <ScalarProperty Name="TID" ColumnName="TID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_AssignCourse">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_AssignCourse">
+        <MappingFragment StoreEntitySet="Tbl_AssignCourse">
+          <ScalarProperty Name="LastDate" ColumnName="LastDate" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="SemesterID" ColumnName="SemesterID" />
+          <ScalarProperty Name="LID" ColumnName="LID" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_File">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_File">
+        <MappingFragment StoreEntitySet="Tbl_File">
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Photo2" ColumnName="Photo2" />
+          <ScalarProperty Name="Photo1" ColumnName="Photo1" />
+          <ScalarProperty Name="Ffile2" ColumnName="Ffile2" />
+          <ScalarProperty Name="Ffile1" ColumnName="Ffile1" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Language">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_Language">
+        <MappingFragment StoreEntitySet="Tbl_Language">
+          <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_LanguageTag">
+      <EntityTypeMapping TypeName="DIU_App_StoreModel.Tbl_LanguageTag">
+        <MappingFragment StoreEntitySet="Tbl_LanguageTag">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+          <ScalarProperty Name="TagID" ColumnName="TagID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

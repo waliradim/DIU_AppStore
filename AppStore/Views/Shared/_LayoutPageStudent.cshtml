@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: #AF9E9E">
 
-    <div class="container navbar navbar-fixed-top">
+    <div class="container navbar ">
         <div class="row">
             <div class="col-md-4">
 
@@ -42,8 +42,8 @@
                 <div class="navbar-collapse collapse fontSize">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Student")</li>
-                        <li>@Html.ActionLink("Project", "Index", "Student")</li>
-                        <li>@Html.ActionLink("Course", "", "Student")</li>
+                        <li>@Html.ActionLink("Project", "Index", "Project")</li>
+                        <li>@Html.ActionLink("Course", "Index", "Student")</li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -62,7 +62,7 @@
 
 
 
-    <div class="container" style="margin-top: 120px; background-color: bisque">
+    <div class="container" style="margin-top: 10px; background-color: bisque">
         @RenderBody()
         <hr />
         <footer>

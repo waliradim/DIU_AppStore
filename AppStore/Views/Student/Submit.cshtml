@@ -3,13 +3,14 @@
 
 @{
     ViewBag.Title = "Submit";
-    Layout = "~/Views/Shared/_LoginRegLayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageStudent.cshtml";
 }
 
 <h2>Submit</h2>
 
+@*"Submit","Student", FormMethod.Post, new {@enctype= "multipart/form-data"}*@
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Submit","Student", FormMethod.Post, new {@enctype= "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
     
@@ -36,35 +37,37 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fil1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectReport, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Fil1, new { type = "file", htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fil1, "", new { @class = "text-danger" })
+           @Html.TextBoxFor(model => model.ProjectReport, new { type = "file" ,@name= "file1", htmlAttributes = new { @class = "form-control" } })
+               @Html.ValidationMessageFor(model => model.ProjectReport, "", new { @class = "text-danger" })
+
+                @*<input type="file" name="Fil1" />*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fil2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Fil2, new { type = "file", htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fil2, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ProjectFile, new { type = "file", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProjectFile, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Pho1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectScreenshot1, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.TextBoxFor(model => model.Pho1, new { type = "file", htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pho1, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ProjectScreenshot1, new { type = "file", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProjectScreenshot1, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Pho2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProjectScreenshot2, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Pho2, new { type = "file", htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Pho2, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ProjectScreenshot2, new { type = "file", htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProjectScreenshot2, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -75,7 +78,12 @@
                 @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
+        @Html.HiddenFor(model=>model.Sid, Convert.ToInt32(Request.QueryString["sid"]))
+        @Html.HiddenFor(model => model.Cid, Convert.ToInt32(Request.QueryString["cid"]))
+        @Html.HiddenFor(model => model.Tid, Convert.ToInt32(Request.QueryString["tid"]))
+       
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

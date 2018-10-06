@@ -5,16 +5,11 @@
     Layout = "~/Views/Shared/_TeacherLayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Your Courses</h2>
 
 <table class="table">
     <tr>
-        <th>
-            Course Id
-        </th>
-        <th>
-            Teacher Id
-        </th>
+        
         <th>
             Teacher Name
         </th>
@@ -28,12 +23,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @item.CID
-        </td>
-        <td>
-            @item.TID
-        </td>
+        
         <td>
             @item.TeacherName
         </td>

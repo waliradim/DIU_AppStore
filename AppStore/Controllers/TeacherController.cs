@@ -136,7 +136,7 @@ namespace AppStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult AssignCourse([Bind(Include = "id,TID,LID,SemesterID,CID")] Tbl_AssignCourse asCourse)
+        public ActionResult AssignCourse([Bind(Include = "id,TID,LID,SemesterID,CID,LastDate")] Tbl_AssignCourse asCourse)
         {
 
             if (ModelState.IsValid)
